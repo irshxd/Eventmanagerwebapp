@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles3.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>to do list </title>
+</head>
+<body>
+  <header>
+    <nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a1 class="navbar-brand" href="#">Event Manager</a1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">contact</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  theme
+                </a>
+              
+                <ul class="dropdown-menu">
+                  <select name="options" id="option">
+                  <option selected value class="dropdown-item" href="#">bg-light</option>
+                  <option class="dropdown-item" href="#">dark</option>
+            
+                  <option class="dropdown-item" href="#">dark(black)</option></select>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">about me</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </nav>
+  </header>
+  <div class="container mt-5 col-6">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="add event" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button id="add_btn" class="btn btn-outline-success" type="button" id="button-addon2">Add</button>
+    </div>
+  
+    <ul id="parentList" class="list-group">
+    <li class="list-group-item d-flex justify-cotent-right"><h5 class="flex-grow-1">Meeting at 6</h5><button class="btn btn-warning mx-3">Edit</button>
+  <button class="btn btn-danger" onclick="removeEvent(this)">Remove </button></li> 
+    </ul> 
+   </div>
+  <script>
+    let addbtn = document.getElementById('add_btn')
+    addbtn.addEventListener('click', addevent)
+ function addevent(e){
+
+ let currentbtn = e.currentTarget
+ let currentInput = currentbtn.previousElementSibling
+ let currentEventName = currentInput.value
+
+ let newEvent = document.createElement('li')
+ //newEvent.classList.add('list-group-item')
+ newEvent.className = "list-group-item d-flex justify-cotent-right"
+ newEvent.innerHTML = `<h5 class="flex-grow-1">${ currentEventName}</h5><button class="btn btn-warning mx-3">Edit</button>
+  <button class="btn btn-danger" onclick="removeEvent(this)">Remove</button>`
+
+let parentList = document.getElementById('parentList');
+parentList.appendChild(newEvent)
+ } 
+ function removeEvent(currEvent){
+ currEvent.parentElement.remove()
+ }
+ </script>
+</body>
+</html>
